@@ -35,7 +35,7 @@ public class AI_Pathfinder : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         if (path == null)
         {
             return;
