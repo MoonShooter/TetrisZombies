@@ -6,10 +6,14 @@ using UnityEngine;
 public class AI_Pathfinder : MonoBehaviour {
 
     public Transform target;
+    public float RotationSpeed;
 
     Seeker seeker;
     Path path;
     int currentWaypoint;
+
+    private Quaternion _lookRotation;
+    private Vector3 _direction;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +46,17 @@ public class AI_Pathfinder : MonoBehaviour {
             return;
         }
 
+        
+        _direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+       
+
+        _lookRotation = Quaternion.LookRotation(_direction);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+
+
         transform.position = path.vectorPath[currentWaypoint];
+
         currentWaypoint++;
 	}
 }
