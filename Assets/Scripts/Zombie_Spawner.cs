@@ -9,6 +9,8 @@ public class Zombie_Spawner : MonoBehaviour {
 
     public float spawnRate;
     public GameObject ZombiePrefab;
+    float overallTimer = 0f;
+    public float changeSpeedAt;
 
     GameObject target;
 
@@ -27,11 +29,18 @@ public class Zombie_Spawner : MonoBehaviour {
 	void Update () {
 
         timer += Time.deltaTime;
+        overallTimer += Time.deltaTime;
         if(timer > spawnRate)
         {
             Instantiate(ZombiePrefab, loc, Quaternion.identity);
 
             timer = 0f;
+        }
+
+        if(spawnRate>.01 && overallTimer > changeSpeedAt)
+        {
+            spawnRate -= .05f;
+            overallTimer = 0f;
         }
 		
 	}

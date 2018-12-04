@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 82313965138361706}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,9 +129,10 @@ GameObject:
   - component: {fileID: 20846799859101212}
   - component: {fileID: 81989450131661110}
   - component: {fileID: 124186502894674372}
+  - component: {fileID: 114394680954907194}
   m_Layer: 0
   m_Name: FirstPersonCharacter
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265748584424396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: 1.1, z: -79.86}
+  m_LocalPosition: {x: 0.8, y: 1.4, z: -58.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4142216501057246}
@@ -700,6 +701,20 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114394680954907194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668168538358728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0aec5104bff024f801ffe9c2a0d10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 5
+  targetDistance: 0
+  AllowedRange: 200
 --- !u!114 &114405062819985610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -724,7 +739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 0
-  m_RunSpeed: 10
+  m_RunSpeed: 0
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 0
   m_StickToGroundForce: 10
@@ -771,8 +786,8 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_UseHeadBob: 1
   m_HeadBob:
-    HorizontalBobRange: 0.1
-    VerticalBobRange: 0.1
+    HorizontalBobRange: 0
+    VerticalBobRange: 0
     Bobcurve:
       serializedVersion: 2
       m_Curve:
@@ -828,7 +843,7 @@ MonoBehaviour:
   m_JumpBob:
     BobDuration: 0.2
     BobAmount: 0.1
-  m_StepInterval: 5
+  m_StepInterval: 0
   m_FootstepSounds:
   - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}

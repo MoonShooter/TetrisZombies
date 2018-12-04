@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Zombie
   - Goal
+  - UI
   layers:
   - Default
   - TransparentFX
