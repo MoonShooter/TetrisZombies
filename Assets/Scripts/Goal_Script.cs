@@ -18,9 +18,11 @@ public class Goal_Script : MonoBehaviour {
 
     public void OnTriggerEnter(Collider col)
     {
-
+        if (col.gameObject.tag == "Zombie")
+        {
             Destroy(col.gameObject);
             print("Collided");
+        }
 
     }
 }

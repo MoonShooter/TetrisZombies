@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class Zombie_Script : MonoBehaviour {
 
-    // Use this for initialization
+    //Later: Adapt this code such that each body part destroyed causes a different effect
+    //example: shooting an arm produces points w/o killing a zombie
+    //shooting a head kills the zombie, removing the posibility to farm more points
+    public int health = 10;
 
-    GameObject go;
-    GameObject goal;
 
 	void Start () {
-        go = this.gameObject;
-        goal = GameObject.FindGameObjectWithTag("Goal");
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+
+    void DeductPoints(int DamageAmount)
+    {
+        health -= DamageAmount;
+        print("Hit Zombie!");
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
 	}
+
+
 
 
 }

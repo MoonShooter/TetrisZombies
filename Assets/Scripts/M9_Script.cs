@@ -13,7 +13,7 @@ public class M9_Script : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            print("Fire");
+            //print("Fire");
             GetComponent<Animation>().Play("Gunshot");
         }
         if (Input.GetKeyDown(KeyCode.F))

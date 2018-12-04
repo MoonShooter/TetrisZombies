@@ -27,7 +27,6 @@ public class Zombie_Spawner : MonoBehaviour {
 	void Update () {
 
         timer += Time.deltaTime;
-        print(timer);
         if(timer > spawnRate)
         {
             Instantiate(ZombiePrefab, loc, Quaternion.identity);
