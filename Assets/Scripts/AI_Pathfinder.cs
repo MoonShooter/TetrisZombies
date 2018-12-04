@@ -6,19 +6,26 @@ using UnityEngine;
 public class AI_Pathfinder : MonoBehaviour {
 
     public Transform target;
-    public float RotationSpeed;
+    float RotationSpeed = 100;
+    public float movementSpeed;
 
     Seeker seeker;
     Path path;
+
     int currentWaypoint;
+    float maxWaypointDistance = 2f;
 
     private Quaternion _lookRotation;
     private Vector3 _direction;
+    private Vector3 _dir;
+
+    CharacterController characterController;
 
 	// Use this for initialization
 	void Start () {
         seeker = GetComponent<Seeker>();
         seeker.StartPath(transform.position, target.position, OnPathComplete);
+        characterController = GetComponent<CharacterController>();
 	}
 	
     public void OnPathComplete(Path p)
@@ -48,6 +55,8 @@ public class AI_Pathfinder : MonoBehaviour {
 
         
         _direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+
+        _dir = _direction * movementSpeed;
        
 
         _lookRotation = Quaternion.LookRotation(_direction);
@@ -55,8 +64,15 @@ public class AI_Pathfinder : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
 
 
-        transform.position = path.vectorPath[currentWaypoint];
+        //transform.position = path.vectorPath[currentWaypoint];
 
-        currentWaypoint++;
+        characterController.SimpleMove(_dir);
+
+        if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance)
+        {
+
+            currentWaypoint++;
+
+        }
 	}
 }
